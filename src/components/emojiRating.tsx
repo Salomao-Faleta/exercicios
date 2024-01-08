@@ -8,8 +8,9 @@ export function EmojiRating({ rate }:Props){
 
     
     const rateInt = Math.floor(rate);
+    const emojis = ['', '😳', '😟', '😑', '🙂', '😁']
 
-    const stars = '😁'.repeat(rateInt) + '😶'.repeat(5 - rateInt)
+    const stars = `${emojis[rateInt]}`.repeat(rateInt) + '😶'.repeat(5 - rateInt)
 
     
     return(

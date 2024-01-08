@@ -1,13 +1,13 @@
-import {Player} from '@/app/components/player'
+import { Greeting } from "@/components/greeting";
 
-function Page(){
-  return(
-    <div>
-      <Player/>
 
-    </div>
+function Page() {
+    return (
+        <div>
+            <Greeting/>
+        </div>
 
-  );
+    );
 }
 
 export default Page;

@@ -1,10 +1,10 @@
-import { Greeting } from "@/components/greeting";
+import { EmojiRating } from "@/components/emojiRating";
 
 
 function Page() {
     return (
-        <div>
-            <Greeting/>
+        <div className="w-screen h-screen flex justify-center items-center">
+            <EmojiRating rate={0.0}/>
         </div>
 
     );

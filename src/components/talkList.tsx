@@ -7,18 +7,23 @@ export function TalkList() {
 
     const [itemInput, setItemInput] = useState('');
 
-    const [list, setList] = useState<TodoItem[]>([
-        { label: "Estudar React", checked: false },
-        { label: "Estudar músicas do neojiba", checked: false }
-    ]);
+    const [list, setList] = useState<TodoItem[]>([]);
 
     function handleAddtask(){
+        if(itemInput == ""){
+            alert('Campo não pode estar vazio');
+            return;
+        }
         setList([
             ...list,
             {label: itemInput, checked: false}
         ]);
 
         setItemInput('');
+    }
+
+    function deleteItem(index:number){
+        setList(list.filter((item, key) => key !== index))
     }
 
     return (
@@ -39,8 +44,8 @@ export function TalkList() {
             <p className="my-4">{list.length} Itens na lista</p>
 
             <ul className="w-full max-w-lg list-disc pl-5">
-                {list.map(item => (
-                    <li>{item.label}<button className="hover:underline">[ Deletar ]</button></li>
+                {list.map((item, index) => (
+                    <li key={index}>{item.label}<button onClick={() => deleteItem(index)} className="hover:underline">[ Deletar ]</button></li>
                 ))}
 
             </ul>

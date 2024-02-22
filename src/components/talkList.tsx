@@ -26,6 +26,17 @@ export function TalkList() {
         setList(list.filter((item, key) => key !== index))
     }
 
+    function toggleItem(index:number){
+        let nemList = [...list];
+        for (let i in nemList){
+            if(index == parseInt(i)){
+                nemList[i].checked = !nemList[i].checked
+            }
+        }
+
+        setList(nemList)
+    }
+
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center text-2xl">
             <h1 className="text-4xl mt-5">Talk List</h1>
@@ -45,7 +56,10 @@ export function TalkList() {
 
             <ul className="w-full max-w-lg list-disc pl-5">
                 {list.map((item, index) => (
-                    <li key={index}>{item.label}<button onClick={() => deleteItem(index)} className="hover:underline">[ Deletar ]</button></li>
+                    <li key={index}>
+                        <input onClick={() => toggleItem(index)} type="checkbox" checked={item.checked} className="w-6 h-6 mr-3"/>
+                        {item.label}<button onClick={() => deleteItem(index)} className="hover:underline">[ Deletar ]</button>
+                    </li>
                 ))}
 
             </ul>
